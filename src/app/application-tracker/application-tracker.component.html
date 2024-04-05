@@ -1,0 +1,38 @@
+<div class="w-full h-screen py-20">
+    <h1 class="text-4xl text-center">Application Status</h1>
+    <div class="w-full h-full flex justify-center items-center">
+        <div class="flex items-center" *ngFor="let item of items;">
+            <div *ngIf="item.status == 'completed'" class="relative">
+
+                <div class="w-5 h-5 rounded-full overflow-hidden">
+                    <div class="w-full h-full flex justify-center items-center green-part" #greenParts>
+                        <i class="fa-solid fa-check text-xs text-white"></i>
+                    </div>
+                </div>
+
+                <div class="absolute top-6 left-0">
+                    {{item.statusName}}
+                </div>
+
+            </div>
+
+            <div *ngIf="item.status == 'pending'" class="relative">
+                <div class="w-5 h-5 border-4 border-green-600 rounded-full"></div>
+                <div class="absolute top-6 left-0">
+                    {{item.statusName}}
+                </div>
+            </div>
+
+            <div *ngIf="!item.isLast" class="w-48 h-1 bg-gray-400">
+                <div *ngIf="item.status=='completed'" class="w-full h-full green-part" #greenParts></div>
+            </div>
+
+            <div *ngIf="item.status == 'awating'" class="relative">
+                <div class="w-2 h-2 rounded-full bg-gray-400"></div>
+                <div class="absolute top-4 left-0">
+                    {{item.statusName}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
